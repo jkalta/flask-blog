@@ -1,27 +1,23 @@
-📝 Flask Blog
 
-A fully functional blog application built using Flask, Flask-Mail, SQLAlchemy, and Bootstrap.
-It supports user registration, login, post creation/editing/deletion, password reset via email, and more.
+# 📝 Flask Blog
 
-Features
+A fully functional blog application built using **Flask**, **Flask-Mail**, **SQLAlchemy**, and **Bootstrap**.
 
-User registration & login (with hashed passwords)
+---
 
-Create, update, delete blog posts
+## Features
+- User registration & login (with hashed passwords)
+- Post creation, editing, deletion
+- Password reset via email
+- SQLAlchemy ORM + Flask-Migrate support
+- Bootstrap 5 UI
+- Secure environment variables via `.env`
 
-Pagination for posts
+---
 
-Password reset via email (Flask-Mail)
+## Project Structure
 
-Flash messages & form validations
-
-Templates using Bootstrap 5
-
-SQLAlchemy ORM with relational models
-
-Secure environment variable management via .env
-
-## 📁 Project Structure
+```
 Flask_Blog/
 │
 ├── flaskblog/
@@ -39,76 +35,72 @@ Flask_Blog/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
+```
 
-Installation & Setup
-Clone the repository
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+---
 
-Create and activate a virtual environment
+## Installation
+
+### Clone the repository
+```bash
+git clone https://github.com/<your-username>/<repo>.git
+cd <repo>
+```
+
+### Create virtual environment
+```bash
 python -m venv .venv
 source .venv/bin/activate      # macOS/Linux
-.\.venv\Scripts\activate       # Windows
+.\.venv\Scripts\activate     # Windows
+```
 
-Install dependencies
+### Install packages
+```bash
 pip install -r requirements.txt
+```
 
-Environment Variables (Create .env file)
+---
 
-Create a .env file in the project root:
+## Environment Variables (.env)
 
+```
 SECRET_KEY=your_flask_secret_key
-
-# Database connection URI
 SQLALCHEMY_DATABASE_URI=sqlite:///site.db
-# Or: postgresql://user:password@localhost/dbname
 
-# Email credentials
 EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_generated_app_password
+EMAIL_PASS=your_app_password
+```
 
+Use **Gmail App Password**, not your login password.
 
+---
 
-Always keep these values secret
-
-
-
-Gmail requires:
-
-2-Step Verification ON
-
-App Password generated for “Mail” → “Other (Flask)”
-
-Database Setup
-
-To initialize the database:
-
-flask shell
-
-
-Then inside the shell:
-
-from flaskblog import db
-db.create_all()
-
-Running the Application
+## Run the App
+```bash
 flask run
+```
 
+---
 
-App runs at:
+## Security Notes
+- `.env` is already in `.gitignore`
+- Never push secrets to GitHub
+- Rotate App Password if exposed
 
-http://127.0.0.1:5000
+---
 
+## Email Setup
+Configured using Gmail SMTP:
 
-Security Notes
+```python
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')
+app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASS')
+```
 
-Do NOT push .env or secrets to GitHub.
+---
 
-Rotate email app password if exposed.
-
-Use a test SMTP service (Mailtrap/Ethereal) during development.
-
-
-License
-
-This project is open source under the MIT License.
+## License
+MIT License © 2025
