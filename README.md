@@ -21,7 +21,7 @@ SQLAlchemy ORM with relational models
 
 Secure environment variable management via .env
 
-📁 Project Structure
+## 📁 Project Structure
 Flask_Blog/
 │
 ├── flaskblog/
